@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PruebaTecnica.App.Core.Domain\PruebaTecnica.App.Core.Domain.csproj" />
+    <ProjectReference Include="..\PruebaTecnica.App.Core.DTOs\PruebaTecnica.App.Core.DTOs.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="RscApplication.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RscApplication.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="RscApplication.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RscApplication.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

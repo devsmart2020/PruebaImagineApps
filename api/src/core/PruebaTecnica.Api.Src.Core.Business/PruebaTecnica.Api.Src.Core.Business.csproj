@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Base\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\infrastructure\PruebaTecnica.Api.Src.Infrastructure.Shared\PruebaTecnica.Api.Src.Infrastructure.Shared.csproj" />
+    <ProjectReference Include="..\PruebaTecnica.Api.Src.Core.Domain\PruebaTecnica.Api.Src.Core.Domain.csproj" />
+    <ProjectReference Include="..\PruebaTecnica.Api.Src.Core.DTOs\PruebaTecnica.Api.Src.Core.DTOs.csproj" />
+  </ItemGroup>
+
+</Project>

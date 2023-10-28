@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PruebaTecnica.App.UI.Views.InfoPage">
+    <Grid Padding="12">
+        <StackLayout HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand">
+            <Image Source="devsmart"
+                   WidthRequest="160" />
+            <Label Text="Prueba Técnica Imagine Apps "
+                   FontSize="Caption"
+                   FontAttributes="Bold" />
+            <Label Text="Desarrollador: John Tobón"
+                   FontSize="Caption" />
+            <Label Text="28  de Octubre de 2023"
+                   FontSize="Caption" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PruebaTecnica.App.UI.Converters"
+             x:Class="PruebaTecnica.App.UI.Views.MoviesPage"
+             Title="Películas">
+    <ContentPage.Resources>
+        <local:ScoreToStarConverter x:Key="ScoreToStarConverter" />
+    </ContentPage.Resources>
+    <StackLayout Margin="6">
+        <Button Text="Cargar Películas"
+                Command="{Binding GetAllMoviesCommand}"
+                WidthRequest="360" />
+        <SearchBar  Placeholder="Buscar películas"
+                    Text="{Binding Search}" />
+        <StackLayout>
+            <ListView ItemsSource="{Binding MovieList}"
+                      Margin="8"
+                      RowHeight="240">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Frame x:Name="frame"
+                                       HasShadow="True"
+                                       CornerRadius="4">
+                                    <Grid RowDefinitions="auto"
+                                          ColumnDefinitions="auto,*">
+                                        <Image Source="{Binding Image}"
+                                               Aspect="AspectFill" />
+                                        <ScrollView Grid.Column="1"
+                                                    Margin="10,0,0,0">
+                                            <StackLayout>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding Title}"
+                                                                  FontSize="Title"
+                                                                  FontAttributes="Bold" />
+                                                            <Span Text=" "
+                                                                  FontSize="Title" />
+                                                            <Span Text="{Binding LaunchDate,StringFormat='{0:yyyy}'}"
+                                                                  FontSize="Title"
+                                                                  FontAttributes="Bold" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label Text="{Binding Genre}"
+                                                       FontSize="Subtitle"
+                                                       FontAttributes="Bold" />
+                                                <Label Text="{Binding Description}" />
+                                                <CollectionView ItemsSource="{Binding Score, Converter={StaticResource ScoreToStarConverter}}"
+                                                                ItemsLayout="HorizontalList"
+                                                                SelectionMode="None"
+                                                                HeightRequest="24">
+                                                    <CollectionView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <StackLayout>
+                                                                <Image Source="{Binding}"
+                                                                       WidthRequest="22" />
+                                                            </StackLayout>
+                                                        </DataTemplate>
+                                                    </CollectionView.ItemTemplate>
+                                                </CollectionView>
+                                            </StackLayout>
+                                        </ScrollView>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <StackLayout Orientation="Horizontal">
+                <ImageButton Source="youtube"
+                             WidthRequest="42"
+                             HorizontalOptions="Start"
+                             BackgroundColor="White"
+                             Command="{Binding ViewTrailerCommand}" />
+                <Label Text="Navegación test"
+                       VerticalOptions="Center" />
+            </StackLayout>
+        </StackLayout>
+        <!--#region IsBusy-->
+        <ContentView IsVisible="{Binding IsBusy}"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Fill"
+                     FlowDirection="MatchParent"
+                     Opacity="0.7">
+            <Frame HasShadow="True">
+                <StackLayout VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+                    <ActivityIndicator HorizontalOptions="Center"
+                                       IsEnabled="{Binding IsEnabled}"
+                                       IsRunning="{Binding IsBusy}"
+                                       Color="{StaticResource Primary}" />
+                    <Label Text="Cargando películas..."
+                           TextColor="Black" />
+                </StackLayout>
+            </Frame>
+        </ContentView>
+        <!--#endregion-->
+    </StackLayout>
+</ContentPage>
